@@ -31,7 +31,32 @@
 ## 3. Diseño Técnico y Arquitectura
 
 * **Diagrama de Contexto:**
+```mermaid
+graph TD
+    %% Definición de Actores y Sistemas
+    Estudiante["Estudiantes / Mechones"]
+    Visitante["Visitantes Externos"]
+    Comunidad["Comunidad Open Source"]
+    
+    %% Sistema Central
+    Sistema{"Mapa Interactivo USM"}
+    
+    %% Sistemas Externos / Infraestructura de apoyo
+    BD["Base de Datos Espacial"]
+    MapaBase["Proveedor de Mapas Base (OSM)"]
 
+    %% Relaciones
+    Estudiante -->|Busca salas, aplica filtros y visualiza ubicaciones| Sistema
+    Visitante -->|Explora el campus para orientarse| Sistema
+    Comunidad -->|Aporta datos, mapea áreas y contribuye al código| Sistema
+    
+    Sistema -->|Consulta coordenadas, polígonos y puntos de interés| BD
+    Sistema -->|Solicita renderizado de cartografía base| MapaBase
+    
+    class Estudiante,Visitante,Comunidad actor;
+    class Sistema sistema;
+    class BD,MapaBase externo;
+```
 
 * **Stack e Infraestructura:**
     * **Frontend:** Next.js con Tailwind CSS.
