@@ -1,33 +1,32 @@
-# [Nombre del proyecto CAMBIAR] ![](https://img.shields.io/badge/estado-activo-green) ![](https://img.shields.io/github/license/lyoss-usm/NOMBRE_DEL_REPOSITORIO-CAMBIAR)
+# Mapa interactivo USM ![](https://img.shields.io/badge/estado-activo-green) ![](https://img.shields.io/github/license/lyoss-usm/mapa)
 
-Pequeña descripción del proyecto..
+El Mapa Interactivo USM es una iniciativa desarrollada por la comunidad con el objetivo de centralizar y facilitar la orientación espacial dentro de la universidad. Construido con tecnologías web modernas y cartografía colaborativa, este mapa permite a estudiantes, docentes y visitantes ubicar rápidamente edificios, departamentos y puntos de interés clave (como baños, dispensadores de agua y laboratorios) a través de una experiencia rápida, filtrable y optimizada para dispositivos móviles.
 
 ## Seguimiento
 
-- Puedes seguir el progreso del proyecto en [GitHub Projects](https://link-de-gh-projects-CAMBIAR.com).
-- Para reportar problemas o sugerencias, visita [GitHub Issues](https://link-de-gh-issues-CAMBIAR.com).
-- Documentación adicional disponible en [GitHub Wiki](https://link-de-gh-wiki-CAMBIAR.com). (SOLO SI EL PROYECTO TIENE WIKI)
+- Puedes seguir el progreso del proyecto en [GitHub Projects](https://github.com/orgs/lyoss-usm/projects/19).
+- Para reportar problemas o sugerencias, visita [GitHub Issues](https://github.com/lyoss-usm/mapa/issues).
 
 ## Requisitos
 
-- [Requisito 1](https://enlace-al-requisito.com) (>= 1.0.0)
-- [Requisito 2](https://enlace-al-requisito.com) (>= 2.0.0)
+ - [Node.js](https://nodejs.org/) (>= 18.0.0)
+ - [npm](https://www.npmjs.com/) (>= 9.0.0)
 
 ## Quick Start
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/lyoss-usm/<nombre-del-proyecto>.git
+   git clone https://github.com/lyoss-usm/mapa.git
    ```
 2. Navega al directorio del proyecto:
    ```bash
-   cd <nombre-del-proyecto>
+   cd mapa
    ```
 3. Instala las dependencias:
    ```bash
-   install dependencies
+   npm install
    ```
 4. Ejecuta el proyecto:
    ```bash
-   run project
+   npm run dev
    ```
