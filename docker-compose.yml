@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: mapa_usm_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mapa_usm_cc
+      POSTGRES_USER: mapa_usm_dev
+      POSTGRES_PASSWORD: mapa_usm_lyoss_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - mapa_usm_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mapa_usm_dev -d mapa_usm_cc"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mapa_usm_pgdata:
