@@ -4,9 +4,10 @@ services:
     container_name: mapa_usm_db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: mapa_usm_cc
-      POSTGRES_USER: mapa_usm_dev
-      POSTGRES_PASSWORD: mapa_usm_lyoss_pass
+  environment:
+    - POSTGRES_DB=${POSTGRES_DB:-mapa_usm_cc}
+    - POSTGRES_USER=${POSTGRES_USER:-mapa_usm_dev}
+    - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
