@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  extensions = [postgis]
+}
+
+model Building {
+  id        String   @id @default(uuid())
+  name      String
+  geometry  Unsupported("geometry(MultiPolygon, 4326)")
+  campus    String
+  numFloors Int      @map("num_floors")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  departments Department[]
+  pois        POI[]
+
+  @@index([campus])
+  @@index([geometry], type: Gist)
+  @@map("buildings")
+}
+
+model Department {
+  id         String   @id @default(uuid())
+  name       String
+  geometry   Unsupported("geometry(MultiPolygon, 4326)")
+  campus     String
+  buildingId String   @map("building_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  building Building @relation(fields: [buildingId], references: [id], onDelete: Cascade)
+  pois     POI[]
+
+  @@index([buildingId])
+  @@index([campus])
+  @@index([geometry], type: Gist)
+  @@map("departments")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  color     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  pois POI[]
+
+  @@map("categories")
+}
+
+model POI {
+  id           String   @id @default(uuid())
+  name         String
+  description  String?
+  imageUrl     String?  @map("image_url")
+  geometry     Unsupported("geometry(Point, 4326)")
+  floor        Int?
+  campus       String
+  categoryId   String   @map("category_id")
+  buildingId   String?  @map("building_id")
+  departmentId String?  @map("department_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  category   Category    @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  building   Building?   @relation(fields: [buildingId], references: [id], onDelete: SetNull)
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  @@index([categoryId])
+  @@index([buildingId])
+  @@index([departmentId])
+  @@index([campus])
+  @@index([geometry], type: Gist)
+  @@map("pois")
+}
