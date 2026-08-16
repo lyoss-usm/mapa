@@ -73,13 +73,13 @@ async function main() {
         fail('Trigger "trg_poi_inherit_building" NO existe');
     }
 
-    // Verificar que existan las 12 categorías sembradas
+    // Verificar que existan las 11 categorías sembradas
     const categoryCount = await prisma.category.count();
-    if (categoryCount === 12) {
-        ok(`12 categorías sembradas correctamente`);
+    if (categoryCount === 11) {
+        ok(`11 categorías sembradas correctamente`);
     } 
     else {
-        fail(`Se esperaban 12 categorías, se encontraron ${categoryCount}`);
+        fail(`Se esperaban 11 categorías, se encontraron ${categoryCount}`);
     }
     
     console.log("");

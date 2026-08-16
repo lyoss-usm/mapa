@@ -17,7 +17,6 @@ const categories = [
   { name: "Cultura", color: "#e37f0d" },
   { name: "Auditorios", color: "#e4f409" },
   { name: "Bibliotecas", color: "#8800ff" },
-  { name: "Puntos de Interés", color: "#EF4444" },
 ];
 
 async function main() {

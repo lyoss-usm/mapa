@@ -4,16 +4,15 @@ services:
     container_name: mapa_usm_db
     restart: unless-stopped
     environment:
-  environment:
-    - POSTGRES_DB=${POSTGRES_DB:-mapa_usm_cc}
-    - POSTGRES_USER=${POSTGRES_USER:-mapa_usm_dev}
-    - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - mapa_usm_pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U mapa_usm_dev -d mapa_usm_cc"]
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
       interval: 5s
       timeout: 5s
       retries: 5
